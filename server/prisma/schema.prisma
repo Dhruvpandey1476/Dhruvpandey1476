@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  email         String   @unique
+  phone         String?  @unique
+  passwordHash  String
+  name          String
+  role          UserRole @default(USER)
+  vehicle       Vehicle?
+  bookings      Booking[]
+  provider      ProviderProfile?
+  rewards       RewardLedger[]
+  subscriptions UserSubscription[]
+}
+
+model Vehicle {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  make          String
+  model         String
+  batteryKWh    Int
+  preferredType ChargeType @default(AC)
+}
+
+model ProviderProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  van       Van?
+}
+
+model Van {
+  id              String   @id @default(cuid())
+  identifier      String   @unique
+  driverId        String?  @unique
+  driver          ProviderProfile? @relation(fields: [driverId], references: [id])
+  capacityKWh     Int
+  availableKWh    Int
+  isActive        Boolean  @default(true)
+  bookings        Booking[]
+}
+
+model Booking {
+  id            String     @id @default(cuid())
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  userId        String
+  user          User       @relation(fields: [userId], references: [id])
+  vanId         String?
+  van           Van?       @relation(fields: [vanId], references: [id])
+  status        BookingStatus @default(PENDING)
+  type          ChargeType
+  scheduledAt   DateTime?
+  lat           Float
+  lng           Float
+  estMinutes    Int
+  estCostCents  Int
+  paymentId     String?
+}
+
+// Rewards and subscriptions
+model RewardLedger {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  points     Int
+  reason     String
+}
+
+model SubscriptionPlan {
+  id           String  @id @default(cuid())
+  createdAt    DateTime @default(now())
+  name         String
+  includedKWh  Int
+  priceCents   Int
+  userSubscriptions UserSubscription[]
+}
+
+model UserSubscription {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  planId       String
+  plan         SubscriptionPlan @relation(fields: [planId], references: [id])
+  active       Boolean  @default(true)
+}
+
+enum UserRole {
+  USER
+  PROVIDER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  ACCEPTED
+  EN_ROUTE
+  CHARGING
+  COMPLETED
+  CANCELLED
+}
+
+enum ChargeType {
+  DC
+  AC
+  SWAP
+}

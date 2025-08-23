@@ -1,12 +1,38 @@
-- 👋 Hi, I’m @Dhruvpandey1476
-- 👀 I’m interested in python,ai/ml and frontend
-- 🌱 I’m currently learning java and dsa
-- 💞️ I’m looking to collaborate on projects related to ai/ml and ds
-- 📫 How to reach me - email: dhruvpandey1476@gmail.com
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+# ChargeGo
 
-<!---
-Dhruvpandey1476/Dhruvpandey1476 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+On-demand mobile EV charging platform (User, Provider, Admin) — monorepo with Node/Express API, React frontend, PostgreSQL + MongoDB, Socket.IO, and Mapbox.
+
+## Quickstart
+
+1. Copy environment
+
+```bash
+cp .env.example .env
+```
+
+2. Start databases
+
+```bash
+npm run db:up
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Run server and web (after initial scaffolding)
+
+```bash
+npm run dev
+```
+
+## Services
+- API: Express + TypeScript, Prisma (Postgres) + Mongoose (Mongo), Socket.IO
+- Frontend: React + Vite + Tailwind + Mapbox
+- Databases: Postgres (structured), Mongo (realtime/telemetry)
+
+## Workspaces
+- server: API service
+- apps/web: React app
