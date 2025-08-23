@@ -21,6 +21,8 @@ model User {
   provider      ProviderProfile?
   rewards       RewardLedger[]
   subscriptions UserSubscription[]
+  enterpriseMemberships EnterpriseMembership[]
+  preference    UserPreference?
 }
 
 model Vehicle {
@@ -67,6 +69,46 @@ model Booking {
   estMinutes    Int
   estCostCents  Int
   paymentId     String?
+  actualCostCents Int?
+  deliveredKWh  Int?
+}
+
+model PricingConfig {
+  id               String  @id @default("default")
+  createdAt        DateTime @default(now())
+  baseAcCents      Int      @default(12)
+  baseDcCents      Int      @default(18)
+  baseSwapCents    Int      @default(16)
+  perKmCents       Int      @default(50)
+  surgeMultiplier  Float    @default(1.0)
+}
+
+model EnterpriseAccount {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  name         String
+  contactEmail String
+  packageKWh   Int
+  balanceKWh   Int
+  active       Boolean  @default(true)
+  members      EnterpriseMembership[]
+}
+
+model EnterpriseMembership {
+  id           String   @id @default(cuid())
+  accountId    String
+  account      EnterpriseAccount @relation(fields: [accountId], references: [id])
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  role         String   @default("member")
+}
+
+model UserPreference {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id])
+  preferredChargeType  ChargeType?
+  lowBatteryReminder   Boolean @default(true)
 }
 
 // Rewards and subscriptions

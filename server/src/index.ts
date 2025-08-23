@@ -7,26 +7,17 @@ import morgan from 'morgan';
 import { Server as SocketIOServer } from 'socket.io';
 import mongoose from 'mongoose';
 import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
-
 import authRouter from './routes/auth.js';
 import bookingRouter from './routes/booking.js';
 import vansRouter from './routes/vans.js';
 import paymentsRouter from './routes/payments.js';
 import subscriptionsRouter from './routes/subscriptions.js';
-
-function attachAuth(req: any, _res: any, next: any) {
-  const header = req.headers?.authorization;
-  if (header?.startsWith('Bearer ')) {
-    try {
-      const token = header.replace('Bearer ', '');
-      const payload = jwt.verify(token, process.env.JWT_SECRET || 'dev') as any;
-      req.userId = payload.sub;
-      req.userRole = payload.role;
-    } catch {}
-  }
-  next();
-}
+import { attachAuth } from './middleware/auth.js';
+import providerJobsRouter from './routes/provider/jobs.js';
+import providerEarningsRouter from './routes/provider/earnings.js';
+import adminRouter from './routes/admin/index.js';
+import plannerRouter from './routes/planner.js';
+import prefsRouter from './routes/prefs.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -68,6 +59,11 @@ app.use('/api/bookings', bookingRouter(io, prisma));
 app.use('/api/vans', vansRouter(prisma));
 app.use('/api/payments', paymentsRouter);
 app.use('/api/subscriptions', subscriptionsRouter(prisma));
+app.use('/api/provider/jobs', providerJobsRouter(prisma));
+app.use('/api/provider/earnings', providerEarningsRouter(prisma));
+app.use('/api/admin', adminRouter(prisma));
+app.use('/api/planner', plannerRouter);
+app.use('/api/prefs', prefsRouter(prisma));
 
 io.on('connection', (socket) => {
   socket.on('van:location', async (payload: { vanId: string; lat: number; lng: number }) => {
