@@ -1,0 +1,26 @@
+{
+  "name": "chargego",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ],
+  "scripts": {
+    "dev:server": "npm --workspace server run dev",
+    "build:server": "npm --workspace server run build",
+    "start:server": "npm --workspace server start",
+    "dev:web": "npm --workspace apps/web run dev",
+    "build:web": "npm --workspace apps/web run build",
+    "start:web": "npm --workspace apps/web run preview",
+    "dev": "concurrently -n server,web -c green,cyan \"npm run dev:server\" \"npm run dev:web\"",
+    "db:up": "docker compose up -d postgres mongo",
+    "db:down": "docker compose down",
+    "prisma:generate": "npm --workspace server run prisma:generate",
+    "prisma:migrate": "npm --workspace server run prisma:migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
