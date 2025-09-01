@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Dhruvpandey1476
 - 👀 I’m interested in python,ai/ml and frontend
-- 🌱 I’m currently learning java and dsa
-- 💞️ I’m looking to collaborate on projects related to ai/ml and ds
+- 🌱 I’m currently learning AI/ML,c++ and dsa
+- 💞️ I’m looking to collaborate on projects related to ai/ml and web dev
 - 📫 How to reach me - email: dhruvpandey1476@gmail.com
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
