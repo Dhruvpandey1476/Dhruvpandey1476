@@ -86,7 +86,6 @@ An intelligent multi-agent coding assistant using AutoGen that helps solve DSA p
 
 # 🐍 Contribution Snake
 
-> After setting up GitHub Actions, this snake animation will automatically work.
 
 <div align="center">
 
