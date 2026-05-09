@@ -55,9 +55,9 @@ An intelligent multi-agent coding assistant using AutoGen that helps solve DSA p
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=dhruvpandey1476&show_icons=true&theme=tokyonight&hide_border=true"/>
+<img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api?username=dhruvpandey1476&show_icons=true&theme=tokyonight&hide_border=true"/>
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=dhruvpandey1476&layout=compact&theme=tokyonight&hide_border=true"/>
+<img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=dhruvpandey1476&layout=compact&theme=tokyonight&hide_border=true"/>
 
 <img src="https://streak-stats.demolab.com?user=dhruvpandey1476&theme=tokyonight&hide_border=true"/>
 
