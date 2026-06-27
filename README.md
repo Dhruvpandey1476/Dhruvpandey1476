@@ -19,6 +19,16 @@
 - 💡 Interested in solving real-world problems with AI products
 - 🏆 GSSoC 2026 Contributor
 
+<div align="center">
+
+### 🌐 Portfolio
+
+<a href="https://dhruv-pandey-portfolio.onrender.com" target="_blank">
+  <img src="https://img.shields.io/badge/Visit%20My%20Portfolio-000000?style=for-the-badge" />
+</a>
+
+</div>
+
 ---
 
 # 💻 Tech Stack
@@ -106,10 +116,6 @@ An intelligent multi-agent coding assistant using AutoGen that helps solve DSA p
 <a href="https://dhruv-pandey-portfolio.onrender.com" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg"
        width="48" height="48" />
-</a>
-
-<a href="https://x.com/DhruvPandey1476">
-<img src="https://skillicons.dev/icons?i=twitter" />
 </a>
 
 <a href="mailto:dhruvpandey1476@gmail.com">
