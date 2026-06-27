@@ -113,10 +113,10 @@ An intelligent multi-agent coding assistant using AutoGen that helps solve DSA p
 <img src="https://skillicons.dev/icons?i=linkedin" />
 </a>
 
-<a href="https://dhruv-pandey-portfolio.onrender.com" target="_blank">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg"
-       width="48" height="48" />
+<a href="https://x.com/DhruvPandey_AI">
+<img src="https://skillicons.dev/icons?i=twitter" />
 </a>
+
 
 <a href="mailto:dhruvpandey1476@gmail.com">
 <img src="https://skillicons.dev/icons?i=gmail" />
