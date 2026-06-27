@@ -104,7 +104,7 @@ An intelligent multi-agent coding assistant using AutoGen that helps solve DSA p
 </a>
 
 <a href="https://dhruv-pandey-portfolio.onrender.com" target="_blank">
-  <img src="https://skillicons.dev/icons?i=render" />
+  <img src="https://img.shields.io/badge/🌐-Portfolio-4285F4?style=for-the-badge" />
 </a>
 
 <a href="https://x.com/DhruvPandey1476">
